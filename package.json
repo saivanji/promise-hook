@@ -1,0 +1,7 @@
+{
+  "name": "promise-hook",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "author": "aiven715 <aiven715@gmail.com>",
+  "license": "MIT"
+}
