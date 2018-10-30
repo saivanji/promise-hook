@@ -14,6 +14,11 @@ Or with npm:
 npm i promise-hook --save
 ```
 
+## Demo
+
+The simplest way to start playing around with react-promisify is with this CodeSandbox snippet:
+https://codesandbox.io/s/ykmklm6m21
+
 ## Simple data fetching
 
 In order to fetch the data, you need to pass a Promise returning function as a first argument to `usePromise` hook. It will return you back response related payload such as resolved data, request status or the error if it exists.
