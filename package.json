@@ -1,6 +1,6 @@
 {
   "name": "promise-hook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hook, simplifying dealing with Promises inside of React components",
   "main": "dist/index.js",
   "umd:main": "dist/index.umd.js",
