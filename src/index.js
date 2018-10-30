@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 
-export const usePromise = (fn, { resolve = false, condition = [] } = {}) => {
+export const usePromise = (
+  fn,
+  { resolve = false, fireCondition = [] } = {}
+) => {
   const [data, setData] = useState();
   const [isLoading, setLoading] = useState(resolve);
   const [lastUpdated, setLastUpdated] = useState();
@@ -22,7 +25,7 @@ export const usePromise = (fn, { resolve = false, condition = [] } = {}) => {
   };
 
   if (resolve) {
-    useEffect(request, condition);
+    useEffect(request, fireCondition);
   }
 
   return {
