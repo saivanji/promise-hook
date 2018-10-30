@@ -20,7 +20,7 @@ In order to fetch the data, you need to pass a Promise returning function as a f
 
 `resolve` option is used to initiate data fetching when component mounts.
 
-```
+```javascript
 import React from "react";
 import { usePromise } from "promise-hook";
 
@@ -39,9 +39,7 @@ const Movies = () => {
 };
 
 const fetchMovies = () =>
-  fetch(`http://your-amazing-api.com/movies`).then(res =>
-    res.json()
-  );
+  fetch(`http://your-amazing-api.com/movies`).then(res => res.json());
 ```
 
 ## Passing arguments
@@ -50,7 +48,7 @@ In order to pass some arguments to the Promise function, you need to use arrow f
 
 By default, when `resolve` option is enabled, data fetching is initiated only on the first render. But you can control it with `resolveCondition` setting. If an array of variables passed will be changed - data fetching will be initiated again.
 
-```
+```javascript
 import React from "react";
 import { usePromise } from "promise-hook";
 
@@ -72,7 +70,9 @@ const Movies = ({ category }) => {
 };
 
 const fetchMovies = category =>
-  fetch(`http://your-amazing-api.com/movies/${category}`).then(res => res.json());
+  fetch(`http://your-amazing-api.com/movies/${category}`).then(res =>
+    res.json()
+  );
 ```
 
 ## Fetching on demand
@@ -81,7 +81,7 @@ When you need to send any request on demand instead of component mount, you can 
 
 After that function is called, data fetching will be started and payload variables such as `isFetching` etc will be updated accordingly.
 
-```
+```javascript
 import React from "react";
 import { usePromise } from "promise-hook";
 import { Form, Input, Button } from "./Form";
@@ -110,12 +110,14 @@ const signUp = data =>
 
 Once the error was happened during the request, an `error` variable will be populated with the corresponding error object. You can use it afterwards for displaying apropriate error message in the UI.
 
-```
+```javascript
 import React from "react";
 import { usePromise } from "promise-hook";
 
 const Movies = () => {
-  const { isFetching, data, error } = usePromise(fetchMovies, { resolve: true });
+  const { isFetching, data, error } = usePromise(fetchMovies, {
+    resolve: true
+  });
 
   return isFetching ? (
     <div>Loading...</div>
@@ -131,12 +133,8 @@ const Movies = () => {
 };
 
 const fetchMovies = () =>
-  fetch(`http://your-amazing-api.com/movies`).then(res =>
-    res.json()
-  );
+  fetch(`http://your-amazing-api.com/movies`).then(res => res.json());
 ```
-
-## API reference
 
 ## TODO
 
