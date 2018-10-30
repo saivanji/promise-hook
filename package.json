@@ -1,7 +1,21 @@
 {
   "name": "promise-hook",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "description": "Hook, simplifying dealing with Promises inside of React components",
   "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "src/index.js",
+  "repository": "git@github.com:aiven715/promise-hook.git",
   "author": "aiven715 <aiven715@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "microbundle --jsx React.createElement"
+  },
+  "peerDependencies": {
+    "react": ">=16.6.0"
+  },
+  "devDependencies": {
+    "microbundle": "^0.7.0"
+  }
 }
