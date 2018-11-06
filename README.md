@@ -16,7 +16,7 @@ npm i promise-hook --save
 
 ## Demo
 
-The simplest way to start playing around with react-promisify is with this CodeSandbox snippet:
+The simplest way to start playing around with `promise-hook` is with this CodeSandbox snippet:
 https://codesandbox.io/s/ykmklm6m21
 
 ## Simple data fetching
