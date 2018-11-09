@@ -30,9 +30,9 @@ import React from "react";
 import { usePromise } from "promise-hook";
 
 const Movies = () => {
-  const { isFetching, data } = usePromise(fetchMovies, { resolve: true });
+  const { isLoading, data } = usePromise(fetchMovies, { resolve: true });
 
-  return isFetching ? (
+  return isLoading ? (
     <div>Loading...</div>
   ) : (
     <div>
@@ -58,12 +58,12 @@ import React from "react";
 import { usePromise } from "promise-hook";
 
 const Movies = ({ category }) => {
-  const { isFetching, data } = usePromise(() => fetchMovies(category), {
+  const { isLoading, data } = usePromise(() => fetchMovies(category), {
     resolve: true,
     resolveCondition: [category]
   });
 
-  return isFetching ? (
+  return isLoading ? (
     <div>Loading...</div>
   ) : (
     <div>
@@ -84,7 +84,7 @@ const fetchMovies = category =>
 
 When you need to send any request on demand instead of component mount, you can use `request` function returned from the `usePromise` hook.
 
-After that function is called, data fetching will be started and payload variables such as `isFetching` etc will be updated accordingly.
+After that function is called, data fetching will be started and payload variables such as `isLoading` etc will be updated accordingly.
 
 ```javascript
 import React from "react";
@@ -92,14 +92,14 @@ import { usePromise } from "promise-hook";
 import { Form, Input, Button } from "./Form";
 
 const SignUp = () => {
-  const { isFetching, request } = usePromise(signUp);
+  const { isLoading, request } = usePromise(signUp);
 
   return (
     <Form onSubmit={data => request(data)}>
       <Input type="text" name="full_name" />
       <Input type="text" name="email" />
       <Input type="password" name="password" />
-      <Button>{isFetching ? "Signing up..." : "Sign up"}</Button>
+      <Button>{isLoading ? "Signing up..." : "Sign up"}</Button>
     </Form>
   );
 };
@@ -120,11 +120,11 @@ import React from "react";
 import { usePromise } from "promise-hook";
 
 const Movies = () => {
-  const { isFetching, data, error } = usePromise(fetchMovies, {
+  const { isLoading, data, error } = usePromise(fetchMovies, {
     resolve: true
   });
 
-  return isFetching ? (
+  return isLoading ? (
     <div>Loading...</div>
   ) : error ? (
     <div>Error loading movies - {error.message}</div>
