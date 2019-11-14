@@ -141,6 +141,37 @@ const fetchMovies = () =>
   fetch(`http://your-amazing-api.com/movies`).then(res => res.json());
 ```
 
+## Promise status
+
+Sometimes, exact promise status is required. It can be handy, for example, if your API doesn't return any data.
+Possible statuses are `pending`, `fulfilled`, `rejected`.
+
+```javascript
+import React from "react";
+import { usePromise } from "promise-hook";
+
+const DeleteMovile = () => {
+  const { isLoading, request, status, error } = usePromise(() => deleteMovie());
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>{error.message}</div>
+  }
+
+  if (status === 'fulfilled') {
+    return <b>Movie has been removed</b>
+  }
+
+  return <button onClick={request}>Remove movie</button>
+};
+
+const deleteMovie = () =>
+  fetch(`http://your-amazing-api.com/movie/remove`);
+```
+
 ## TODO
 
 - Promise cancelling.

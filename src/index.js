@@ -8,6 +8,7 @@ export const usePromise = (
   const [isLoading, setLoading] = useState(resolve);
   const [lastUpdated, setLastUpdated] = useState();
   const [error, setError] = useState();
+  const [status, setStatus] = useState('pending');
 
   const request = (...args) => {
     /*
@@ -19,13 +20,13 @@ export const usePromise = (
     fn(...args)
       .then(result => {
         if (!isValid) return;
-
+        setStatus('fulfilled')
         setData(result);
         setLastUpdated(Date.now());
       })
       .catch(err => {
         if (!isValid) return;
-
+        setStatus('rejected')
         setError(err);
       })
       .finally(() => {
@@ -52,6 +53,7 @@ export const usePromise = (
     data,
     isLoading,
     lastUpdated,
-    error
+    error,
+    status
   };
 };
