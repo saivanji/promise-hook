@@ -8,24 +8,29 @@ export const usePromise = (
   const [isLoading, setLoading] = useState(resolve);
   const [lastUpdated, setLastUpdated] = useState();
   const [error, setError] = useState();
+  const [status, setStatus] = useState('pending');
 
   const request = (...args) => {
     /*
     Using isValid guard, in order to prevent the cleanup warning.
     */
     let isValid = true;
+
     setLoading(true);
+    setStatus('pending');
+    setError(undefined);
+    setData(undefined);
 
     fn(...args)
       .then(result => {
         if (!isValid) return;
-
+        setStatus('fulfilled')
         setData(result);
         setLastUpdated(Date.now());
       })
       .catch(err => {
         if (!isValid) return;
-
+        setStatus('rejected')
         setError(err);
       })
       .finally(() => {
@@ -52,6 +57,7 @@ export const usePromise = (
     data,
     isLoading,
     lastUpdated,
-    error
+    error,
+    status
   };
 };
