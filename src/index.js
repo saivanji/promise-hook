@@ -15,7 +15,11 @@ export const usePromise = (
     Using isValid guard, in order to prevent the cleanup warning.
     */
     let isValid = true;
+
     setLoading(true);
+    setStatus('pending');
+    setError(undefined);
+    setData(undefined);
 
     fn(...args)
       .then(result => {
